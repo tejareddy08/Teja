@@ -1,0 +1,40 @@
+-- Q) Write an SQL Query to find out call duration (in minute) for every call.
+
+-- 𝐓𝐚𝐛𝐥𝐞 - 𝟏
+CREATE TABLE call_start(
+ph_no varchar(10),
+start_time DATETIME);
+
+-- 𝐈𝐧𝐬𝐞𝐫𝐭 𝐭𝐡𝐞 𝐝𝐚𝐭𝐚 
+INSERT INTO call_start VALUES
+('contact_1','2024-05-01 10:20:00'),
+('contact_1','2024-05-01 16:25:00'),
+('contact_2','2024-05-01 12:30:00'),
+('contact_3','2024-05-02 10:00:00'),
+('contact_3','2024-05-02 12:30:00'),
+('contact_3','2024-05-03 09:20:00');
+
+-- 𝐓𝐚𝐛𝐥𝐞 - 𝟐
+ CREATE TABLE call_end(
+ph_no VARCHAR(10),
+end_time DATETIME);
+
+ -- 𝐈𝐧𝐬𝐞𝐫𝐭 𝐭𝐡𝐞 𝐝𝐚𝐭𝐚
+ INSERT INTO call_end VALUES
+('contact_1','2024-05-01 10:45:00'),
+('contact_1','2024-05-01 17:05:00'),
+('contact_2','2024-05-01 12:55:00'),
+('contact_3','2024-05-02 10:20:00'),
+('contact_3','2024-05-02 12:50:00'),
+('contact_3','2024-05-03 09:40:00');
+
+--
+
+--create pyspark dataframe 
+and do operations on filter , groupby , order
+
+
+
+
+
+
