@@ -36,6 +36,68 @@ eager evaluation -- execution will start immediately when ever an action stateme
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#spark session initiation- (driver program/main program ) -- this will be initiated by driver node/master node-- it is the entry point to spark environment
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.appName("example").getOrCreate()
+
+#--reading data 
+df = spark.read.csv("path")
+df = spark.read.format("csv or text or parquet orjson").option("inferschema", True).opation("header", True).load("path")
+
+#--inferschema -- assigns datatype to the column based on column values
+#--header -- aligns first row of the dataset as a header
+
+#Assigning schema
+#--schema -- defining a structure - column names and its corresponding datatypes
+#method 1 of creating dataframe with schema
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType
+
+data = [(1,'abc'),(2,'def')]
+schema = StructType([StructField("id", IntegerType(), True),
+                     StructField("name", StringType(), True)]
+
+df = spark.createDataFrame(data, schema)
+df.display()
+
+#method 2 of infering schema and creating dataframe 
+df = spark.read.format("csv or text or parquet orjson").option("inferschema", True).opation("header", True).load("path")
+
+#method 3 
+df = df.select(col("id").cast("float")) #-- cast operator will convert the datatype of a column
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#selecting columns 
+
+df = df.select("*") #--select * from table 
+df = df.select("col1", "col2") #--select col1, col2 from table
+df = df.select(col("col1").alias("id") #--select col1 as id from table --alias is used tochange names or to give names
+
+#filtering
+df = df.filter(col("col1") == value) #select * from table where col1 = value
+df = df.filter((col("col1") == value) and (col("col2") >= value)) #select * from table where col1 = value and col2 >= value
+df = df.filter((col("col1").between(valu1, value2))) #select *  from table where col1 between a and b 
+df = df.filter(col("col1").isin(value, value2)) # select * from table where col1 in (value, value2)
+df = df.filter(col("col1").isnull()) #select * from table where col is null
+df = df.filter(col("col1").like("Tej%")) #select * from table where col like 'Tej%'
+
+#groupby
+df = df.groupBy(col("col1").sum("col2") #select col1 , sum(col2 ) from table group by col1
+
+#orderby
+
+df = df.orderBy(col("col1")) #select * from table order by col1 
+from pyspark.sql.functions import col, desc
+df = df.orderBy(col("col1").desc()) #select * from table order by col1 desc
+
+
+                
+
+
+
+
+
+
 
 
 
