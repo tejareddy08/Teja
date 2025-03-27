@@ -33,6 +33,34 @@ end_time DATETIME);
 --create pyspark dataframe 
 and do operations on filter , groupby , order
 
+ assignment 
+
+from pyspark.sql import SparkSession 
+spark =  SparkSession.builder.appName('Teja').getOrCreate()
+from pyspark.sql.types import StructType,StructField,IntegerType,StringType
+
+data = [(1,'Rahul'),(2, 'teja')]
+schema = StructType([StructField("rank",IntegerType(),True),
+                     StructField("Name", StringType(),True)])
+df=spark.createDataFrame(data, schema)
+
+
+df.display()
+
+from pyspark.sql.functions import col
+#select * from table 
+df1 = df.select('*')
+#select col1 from table
+df1 =  df.select(col('rank'), col('name'))
+df1.display()
+
+filter 
+df = df.filter(col("rank") == 1)
+
+
+
+
+
 --drop, delete, truncate differences 
 --pyspak architecture
 
