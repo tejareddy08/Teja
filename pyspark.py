@@ -90,6 +90,44 @@ df = df.orderBy(col("col1")) #select * from table order by col1
 from pyspark.sql.functions import col, desc
 df = df.orderBy(col("col1").desc()) #select * from table order by col1 desc
 
+#joins
+#inner join
+#outer join
+#left join
+#right join
+#broadcast join       
+
+df = df.join(df2,'common col','inner') 
+df = df.join(df2,'common col','left') 
+
+#broadcast join
+if we have one smaller data frame and a larger data frame we braodcast smaller dataframe among all worker nodes so that there wont be shuffling to perform join operation 
+and hence will increase the performance
+ we need to import first
+ from pyspark.sql.functions import broadcast
+df_broadcast = df.join(broadcast(df2, 'common col', 'inner')
+
+#window functions
+#rank, denserank,row number, lead , lag, sum, avg,count, min, max .
+select col1, denserank() over ( order by col2) as dr from table 
+from pyspark.sql import window
+df_window = window.orderBy(col('colname').desc())
+df_1 = df.withColumn('dr' , df.dense_rank(). over(df_window))
+
+df_window = window.orderBy(col('colname').desc())
+df_1 = df.withColumn('dr' , df.row_number(). over(df_window))
+
+df_window = window.orderBy(col('colname').desc())
+df_1 = df.withColumn('dr' , df.rank(). over(df_window))
+
+
+
+
+
+                       
+
+
+
 
                 
 
