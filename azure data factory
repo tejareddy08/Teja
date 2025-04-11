@@ -1,1 +1,21 @@
+AZURE DATA FACTORY: its an data orchestration tool .  which helps us to move data from source to destination . 
+COMPONENTS IN ADF:   Pipelines,Activities, LinkedService, Triggers, DataSet, Integration Run time, Alerts&metrics
+1pipelines: its  logical grouping ofactivities
+2L activities: the actual task ex: copy activity
+3 linkedservice: its acts as a bridge btw activities and Datasets , or we can call it as a connection string.
+4 integration runtime : basically its an compute(nothing but an engine) environment in datafactory which run pipelines
+                        consists of 3 types: auto resolved it:  when we get data with in azure services and dump or store with in azure services we use auto resolved it
+                                   2: self hosted it: when we get data from databases(not part of azure services) we use self hosted 
+                                  3. SSIS packages : we barely use it.
+note: when we try to use auto resolved it to get or store data from databases .firewalls does not support it.
 
+Triggers: its nothing but an unit which executes  automatically.
+           3 types : schedule trigger: it excutes on a particular date and particular time which we sets.
+                     tumbling trigger: its executes in certrain intervals like 5, 10 minutes or a week or a month 
+                     event triggers : custom event, storage event : storage event is used when an new files gets into storage account or a certain file gets deleted we 
+                                                                     we use storage event , custom is used for custom events.
+alerts &metrics: to get notifications we use alerts . to get trends and movements we use metrics 
+data flows: to apply transformations we use data flows
+
+arm template : it collets all the project data of adf and stores in json file format.  for suppose if we create a new data factory and need all the pipelines data from 
+           previous data factory we simply export arm file into new azure data factory.
