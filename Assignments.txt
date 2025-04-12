@@ -63,5 +63,53 @@ df = df.filter(col("rank") == 1)
 
 
 
+This Pyspark coding question that was asked during hashtag#Deloitte_USI R2 round solve it:
+I am sharing all the interview question over the Linkedin 
+1.Write a Pyspark code to read the parquet file from location?
+
+2. You are given a DataFrame with the following columns:
+id (Integer)
+sales (Integer)
+Write a PySpark code to aggregate the avg sales for each id and select 2nd lowest sale from the DataFrame ?
+3. Question:
+You are given a table containing the following columns: id, department, salary, and zip_code. The zip_code column contains alphanumeric strings such as ab23h7fcs4.
+Your task is to generate a new column named New_zip_code, where the value is the sum of all digits present in the corresponding zip_code.
+id department         salary zip_code
+1 HR 55000            ab23h7fcs4
+2 IT 72000 xk87j2qwe9
+3 Engineering 95000 mz56v1pkl3
+4 HR 63000 ql29u8zxy2
+5 IT 88000 nj31e5ras8
+6 Engineering 60000 wd94k6mnb1
+Output:
+id department         salary New_zip_code
+1 HR 55000             16
+2 IT 72000 26
+3 Engineering 95000 15
+4 HR 63000 21
+5 IT 88000 17
+6 Engineering 60000 20
+4.Question:
+You are given a table with employee information containing the following columns: id, department, salary, and zip_code.
+Your task is to create a new column called Salary_differ, which shows the difference between the maximum salary in each department and the employee's salary.
+id department         salary zip_code
+1 HR 55000            ab23h7fcs4
+2 IT 72000 xk87j2qwe9
+3 Engineering 95000 mz56v1pkl3
+4 HR 63000 ql29u8zxy2
+5 IT 88000 nj31e5ras8
+6 Engineering 60000 wd94k6mnb1
+output
+id department         salary zip_code Salary_differ
+1 HR 55000            ab23h7fcs4 8000
+2 IT 72000 xk87j2qwe9 16000
+3 Engineering 95000 mz56v1pkl3 95000
+4 HR 63000 ql29u8zxy2 0
+5 IT 88000 nj31e5ras8 0
+6 Engineering 60000 wd94k6mnb1 35000
+ 
+
+
+
 
 
